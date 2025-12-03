@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>板一覧</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/board.css') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}" defer></script>
+</head>
+<body>
+<div class="container">
+
+<header class="site-header">
+    <h1><a href="{{ url_for('index') }}">掲示板</a></h1>
+    <button id="themeToggle" class="theme-toggle">🌙 / ☀️</button>
+</header>
+
+<section class="panel">
+    <h2>板一覧</h2>
+
+    <ul class="board-list">
+        {% for b in boards %}
+        <li><a href="{{ url_for('board_view', board_id=b.id) }}">/{{ b.name }}/</a></li>
+        {% endfor %}
+    </ul>
+
+    <form action="{{ url_for('add_board') }}" method="post">
+        <input type="text" name="name" placeholder="新しい板名" required>
+        <button type="submit">作成</button>
+    </form>
+</section>
+
+</div>
+</body>
+</html>

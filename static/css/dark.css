@@ -1,0 +1,24 @@
+html.dark {
+    --bg: #0b1020;
+    --card: #0f1724;
+    --text: #e6eef8;
+    --muted: #9aa7bf;
+    --accent: #f6c84c;
+}
+
+html.dark body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+html.dark .panel {
+    background: var(--card);
+    box-shadow: none;
+}
+
+html.dark input[type="text"],
+html.dark textarea {
+    background: #0b1220;
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.04);
+}

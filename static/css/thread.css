@@ -1,0 +1,18 @@
+.post {
+    background: var(--card);
+    padding: 16px;
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+}
+
+.post .meta {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.post .body {
+    font-size: 16px;
+    white-space: pre-wrap;
+}

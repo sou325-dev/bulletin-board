@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}{{ board.name }}{% endblock %}
+{% block content %}
+<section class="panel">
+    <h2>スレ一覧</h2>
+    <ul class="thread-list">
+        {% for t in threads %}
+        <li>
+            <a href="{{ url_for('thread_view', thread_id=t.id) }}">{{ t.title }}</a>
+            <span class="time">{{ t.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3>新しいスレッド</h3>
+    <form action="{{ url_for('add_thread', board_id=board.id) }}" method="post" class="form-block" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="スレッドタイトル" required>
+        <input type="text" name="name" placeholder="名前(省略可)">
+        <textarea name="body" placeholder="最初の書き込み（省略可）"></textarea>
+        <input type="file" name="image" accept="image/*,video/mp4,video/webm">
+        <button type="submit">作成</button>
+    </form>
+</section>
+{% endblock %}

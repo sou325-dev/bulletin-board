@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}{{ thread.title }}{% endblock %}
+{% block content %}
+<section class="panel posts-panel">
+    <h2>{{ thread.title }}</h2>
+    <div class="posts">
+        {% for p in posts %}
+        <div class="post">
+            <div class="post-meta">No.{{ loop.index }} {{ p.name }} <span class="time">{{ p.created_at.strftime('%Y-%m-%d %H:%M') }}</span></div>
+            <div class="post-body">
+                {{ p.body }}
+                {% if p.image_filename %}
+                <div class="post-image">
+                    <img src="{{ url_for('static', filename='uploads/' ~ p.image_filename) }}" style="max-width:300px;">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h3>レスを書く</h3>
+<form action="{{ url_for('add_post', thread_id=thread.id) }}" method="post" class="form-block" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="名前(省略可)" value="{{ request.cookies.get('username', '') }}">
+    <textarea name="body" placeholder="本文"></textarea>
+    <input type="file" name="image" accept="image/*">
+    <button type="submit">投稿</button>
+</form>
+
+</section>
+{% endblock %}

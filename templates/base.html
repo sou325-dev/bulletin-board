@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}掲示板{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/board.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark.css') }}">
+    <script src="{{ url_for('static', filename='js/theme.js') }}" defer></script>
+</head>
+<body>
+<header class="site-header">
+    <h1><a href="{{ url_for('index') }}">掲示板</a></h1>
+    {% if board %}
+    <div class="header-right">
+        <span class="board-name">/{{ board.name }}/</span>
+        <button id="themeToggle" class="theme-toggle">🌙 / ☀️</button>
+    </div>
+    {% endif %}
+</header>
+
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

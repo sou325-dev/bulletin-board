@@ -1,0 +1,18 @@
+.board-list {
+    padding: 0;
+    list-style: none;
+}
+
+.board-item {
+    padding: 14px 16px;
+    background: var(--card);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.board-item a {
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: bold;
+}
